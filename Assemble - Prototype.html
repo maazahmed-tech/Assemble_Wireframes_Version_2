@@ -635,8 +635,8 @@ textarea{resize:vertical}
         <div class="lrow" data-rg="mode" data-rv="closet"><b>Closet only</b><span class="mut"> — use what I own</span></div>
         <div class="lrow" data-rg="mode" data-rv="mix"><b>Closet + shopping</b><span class="mut"> — fill gaps with store items</span></div>
         <div class="lrow" data-rg="mode" data-rv="shop"><b>Shopping only</b><span class="mut"> — build a fresh look</span></div>
-        <div class="lbl">Budget for new items</div>
-        <div class="chips"><div class="chip" data-rg="pb" data-rv="1">Under $50</div><div class="chip" data-rg="pb" data-rv="2">$50–150</div><div class="chip" data-rg="pb" data-rv="3">$150+</div></div>
+        <div id="uGenBudget"><div class="lbl">Budget for new items</div>
+        <div class="chips"><div class="chip" data-rg="pb" data-rv="1">Under $50</div><div class="chip" data-rg="pb" data-rv="2">$50–150</div><div class="chip" data-rg="pb" data-rv="3">$150+</div></div></div>
         <div class="lbl">How bold?</div>
         <div class="chips"><div class="chip" data-rg="bold" data-rv="simple">Keep it simple</div><div class="chip" data-rg="bold" data-rv="bal">Balanced</div><div class="chip" data-rg="bold" data-rv="bold">Make a statement</div></div>
         <div id="genArea"></div>
@@ -1493,7 +1493,7 @@ textarea{resize:vertical}
       var _prp=document.getElementById('uProPrice');if(_prp)_prp.innerHTML=st.radio.billing==='yr'?'$149.90<span class="mut" style="font-weight:400">/yr</span>':'$14.99<span class="mut" style="font-weight:400">/mo</span>';
       var _prn=document.getElementById('uProNote');if(_prn)_prn.textContent=st.radio.billing==='yr'?'≈ $12.49/mo · 2 months free':'or $149.90/yr · save 2 months';
       var occL={dinner:'Dinner',work:'Work',club:'Club',church:'Church',ball:'Ball',vacay:'Vacation',daily:'Everyday'},drL={casual:'Casual',smart:'Smart casual',formal:'Formal'},moL={closet:'Closet only',mix:'Closet + shopping',shop:'Shopping only'},pbL={'1':'Under $50','2':'$50–150','3':'$150+'},packL={'10':{p:'$2.99',c:10},'50':{p:'$9.99',c:50},'100':{p:'$16.99',c:100}},planL={free:{n:'Free',p:'$0'},plus:{n:'Plus',p:'$6.99'},pro:{n:'Pro',p:'$14.99'}},frN={maya:'Maya',sam:'Sam',alex:'Alex'};
-      var rs=document.getElementById('uResSummary');if(rs)rs.textContent=(occL[st.radio.occ]||'Dinner')+' · '+(drL[st.radio.dress]||'Smart casual')+' · '+(moL[st.radio.mode]||'Closet + shopping')+' · '+(pbL[st.radio.pb]||'$50–150')+(st.refine?' · '+st.refine:'');
+      var rs=document.getElementById('uResSummary');if(rs)rs.textContent=(occL[st.radio.occ]||'Dinner')+' · '+(drL[st.radio.dress]||'Smart casual')+' · '+(moL[st.radio.mode]||'Closet + shopping')+(st.radio.mode==='closet'?'':' · '+(pbL[st.radio.pb]||'$50–150'))+(st.refine?' · '+st.refine:'');
       var pll=document.getElementById('uPlanLabel');if(pll)pll.textContent=planL[st.plan].n;
       var pbg=document.getElementById('uPlanBig');if(pbg)pbg.textContent=planL[st.plan].n;
       var _sm=document.getElementById('uSubMeta');if(_sm){var _meta='No active subscription';if(st.plan==='plus')_meta='$6.99/mo · renews Jul 30, 2026';else if(st.plan==='pro')_meta=(st.term==='yr')?'$149.90/yr · renews Jul 30, 2027':'$14.99/mo · renews Jul 30, 2026';_sm.textContent=_meta;}
@@ -1514,6 +1514,7 @@ textarea{resize:vertical}
       var _sv=document.getElementById('uPackSaveBtn'),_dl=document.getElementById('uPackDelBtn');if(_sv&&_dl){var _ps=!!st.packSaved;_sv.style.display=_ps?'none':'';_dl.style.display=_ps?'':'none';}
       if(st.screen==='outfitDetail'){var _wb=document.getElementById('uWearBtn');if(_wb){_wb.textContent=st.wornToday?'✓ Worn today':'Wear today';_wb.classList.toggle('on',!!st.wornToday);}var _wn=document.getElementById('uWornNote');if(_wn)_wn.style.display=st.wornToday?'':'none';document.querySelectorAll('#userApp [data-screen="outfitDetail"] .wc').forEach(function(w){var b=+w.dataset.base||0;w.textContent='worn '+(b+(st.wornToday?1:0))+'×';});}
       var closet=(st.radio.mode==='closet');
+      var _gb=document.getElementById('uGenBudget');if(_gb)_gb.style.display=closet?'none':'';
       var mr=document.getElementById('uMissRow');if(mr)mr.style.display=closet?'none':'flex';
       var sb=document.getElementById('uShopBtn');if(sb)sb.style.display=closet?'none':'';
       var ra=document.getElementById('uResA'),rb=document.getElementById('uResB'),rc=document.getElementById('uResC');
