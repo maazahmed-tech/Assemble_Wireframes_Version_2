@@ -464,6 +464,7 @@ textarea{resize:vertical}
         <div class="mut" style="margin-top:-4px">Pick the silhouette closest to you — used only to preview outfits.</div>
         <div class="chips"><div class="chip" data-rg="body" data-rv="a">Slim</div><div class="chip" data-rg="body" data-rv="b">Athletic</div><div class="chip" data-rg="body" data-rv="c">Average</div><div class="chip" data-rg="body" data-rv="d">Curvy</div><div class="chip" data-rg="body" data-rv="e">Broad</div></div>
         <button class="btn" data-nav="home">Finish</button>
+        <div class="link" data-nav="avatar3d">Or create a realistic 3D avatar →</div>
         <div class="link" data-nav="home">Use generic avatar instead</div>
       </div></section>
 
@@ -505,6 +506,7 @@ textarea{resize:vertical}
         <div class="seclbl">Avatar photo</div>
         <div style="display:flex;gap:11px;align-items:center"><div class="ph" style="width:60px;height:74px;border-radius:10px;flex:none">avatar</div><div style="flex:1"><div style="font-weight:600;font-size:12.5px">Avatar photo</div><div class="mut">Used to preview outfits on your body.</div></div></div>
         <div class="frow"><button class="btn-o" data-open="avatarConsent" style="flex:1">Change photo</button><button class="btn-g" data-open="deleteAvatar" style="flex:1">Remove avatar data</button></div>
+        <div class="menurow" data-nav="avatar3d"><span style="flex:1">Create a 3D avatar</span><span class="arw">→</span></div>
         <button class="btn" data-open="prefsSaved" style="margin-top:4px">Save changes</button>
       </div></section>
 
@@ -520,6 +522,7 @@ textarea{resize:vertical}
           <div class="tile" data-nav="genOccasion"><div style="font-weight:700;font-size:13px;margin-top:6px">Plan for an event</div><div class="mut">Dinner, work, club…</div></div>
           <div class="tile" data-act="surprise" data-lock="pro"><div style="font-weight:700;font-size:13px;margin-top:6px">Surprise me</div><div class="mut">A random outfit idea</div></div>
           <div class="tile" data-nav="packing" data-lock="pro"><div style="font-weight:700;font-size:13px;margin-top:6px">Pack for a trip</div><div class="mut">Build a travel packing list</div></div>
+          <div class="tile" data-nav="avatar3d"><div style="font-weight:700;font-size:13px;margin-top:6px">3D avatar</div><div class="mut">See yourself in 3D</div></div>
         </div>
         <div class="ad adbanner"><div class="ph" style="width:44px;height:44px;border-radius:9px;flex:none">Ad</div><div style="flex:1"><div style="font-weight:700;font-size:12px">Sponsored · BrandCo</div><div class="mut">Up to 30% off belts and accessories</div></div><span class="mut" style="font-size:9.5px;border:1px solid var(--line-2);border-radius:5px;padding:1px 5px">AD</span></div>
         <div class="card click" data-nav="social" style="display:flex;align-items:center;gap:10px"><div style="flex:1"><div style="font-weight:700;font-size:13px">Friends &amp; shared looks</div><div class="mut">2 looks shared with you · give feedback</div></div><div class="badge">2</div></div>
@@ -732,8 +735,51 @@ textarea{resize:vertical}
         <div class="lbl">Refine this look</div>
         <div class="chips"><div class="chip" data-act="refine:cheaper">Cheaper</div><div class="chip" data-act="refine:more formal">More formal</div><div class="chip" data-act="refine:more casual">More casual</div><div class="chip" data-act="refine:bolder">Bolder</div><div class="chip" data-act="refine:simpler">Simpler</div></div>
         <div class="tlink" data-open="reportAI" style="align-self:flex-start">Report a wrong suggestion</div>
-        <div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn-o" data-act="wearToday" id="uWearBtn" style="flex:1;min-width:130px">Wear today</button><button class="btn" data-open="saveTo" data-lock="plus" style="flex:1;min-width:130px">Save outfit</button><button class="btn-o" data-open="share" style="flex:1;min-width:130px">Share</button><button class="btn-o" data-nav="shop" id="uShopBtn" style="flex:1;min-width:130px">Shop missing (1)</button></div>
+        <div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn-o" data-act="wearToday" id="uWearBtn" style="flex:1;min-width:130px">Wear today</button><button class="btn" data-open="saveTo" data-lock="plus" style="flex:1;min-width:130px">Save outfit</button><button class="btn-o" data-open="share" style="flex:1;min-width:130px">Share</button><button class="btn-o" data-nav="shop" id="uShopBtn" style="flex:1;min-width:130px">Shop missing (1)</button><button class="btn-o" data-act="a3dFromOutfit" style="flex:1;min-width:130px">Create 3D avatar</button></div>
         <div id="uWornNote" class="mut center" style="display:none;font-size:11px;margin-top:2px">✓ Logged to your outfit history · each item's wear count went up</div>
+      </div></section>
+
+      <section class="screen" data-screen="avatar3d"><div class="wrap">
+        <div class="top"><div class="iconbtn" data-back>←</div><div class="ttl">Your 3D avatar</div></div>
+        <div class="ph" style="height:180px;border-radius:14px;text-align:center;line-height:1.4">3D avatar<br>preview</div>
+        <div class="sub">A realistic, turn-around 3D you — built from four full-body photos (front, back, left, right). See a look from every angle and share it for friends' feedback.</div>
+        <div class="note">Best results come from clear, full-body photos in good light, no harsh shadows, plain background.</div>
+        <button class="btn" data-act="a3dStartPhotos">Create from my photos</button>
+        <div class="link" data-nav="avatars3d">View my 3D avatars</div>
+      </div></section>
+
+      <section class="screen" data-screen="avatar3dMake"><div class="wrap">
+        <div class="top"><div class="iconbtn" data-back>←</div><div class="ttl" id="uA3dMakeTtl">Add your photos</div></div>
+        <div id="uA3dMakeBody"></div>
+        <div class="lbl">Quality</div>
+        <div class="chips"><div class="chip" data-rg="a3dq" data-rv="std">Standard</div><div class="chip" data-rg="a3dq" data-rv="high">High</div></div>
+        <div id="uA3dMakeArea"></div>
+      </div></section>
+
+      <section class="screen" data-screen="avatar3dGen"><div class="wrap" style="padding:70px 20px;align-items:center;text-align:center;gap:16px">
+        <div class="spin"></div>
+        <div class="ttl" style="font-size:15px">Building your 3D avatar…</div>
+        <div class="sub">Reconstructing you from your photos — this takes a little longer than a normal generation.</div>
+        <div style="width:100%;max-width:260px;height:8px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:6px;overflow:hidden"><div id="uA3dBar" style="height:100%;width:0;background:var(--ink)"></div></div>
+        <div class="mut" id="uA3dProg">0%</div>
+        <div class="tlink" data-nav="avatar3dMake">Cancel</div>
+      </div></section>
+
+      <section class="screen" data-screen="avatar3dResult"><div class="wrap">
+        <div class="top"><div class="iconbtn" data-nav="avatars3d">←</div><div class="ttl" style="flex:1">Your 3D avatar</div><div class="pill-o" data-act="a3dGenerate">Regenerate</div></div>
+        <div class="ph" style="height:300px;border-radius:16px;text-align:center;line-height:1.4">3D avatar<br>drag to rotate</div>
+        <div class="chips" style="justify-content:center"><div class="chip">◀ Rotate</div><div class="chip">Rotate ▶</div></div>
+        <div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn" data-act="a3dSave" style="flex:1;min-width:130px">Save</button><button class="btn-o" data-open="share" style="flex:1;min-width:130px">Share for feedback</button><button class="btn-o" data-nav="avatar3dMake" style="flex:1;min-width:130px">Edit photos</button></div>
+        <div class="mut center" id="uA3dSavedNote" style="display:none;font-size:11px">✓ Saved to your 3D avatars</div>
+      </div></section>
+
+      <section class="screen" data-screen="avatars3d"><div class="wrap wide">
+        <div class="hrow"><div class="h2">My 3D avatars</div><div class="pill-o" data-nav="avatar3d">＋ Create</div></div>
+        <div class="grid g-140" id="uA3dGallery">
+          <div style="cursor:pointer" data-nav="avatar3dResult"><div class="ph" style="height:170px">3D avatar</div><div style="font-size:12px;font-weight:600;margin-top:5px">Dinner look</div><div class="mut" style="font-size:10px">Standard · 3d ago</div></div>
+          <div style="cursor:pointer" data-nav="avatar3dResult"><div class="ph" style="height:170px">3D avatar</div><div style="font-size:12px;font-weight:600;margin-top:5px">Everyday</div><div class="mut" style="font-size:10px">High · 1w ago</div></div>
+        </div>
+        <div class="mut center" style="font-size:11px">Open one to rotate, share, edit its photos, or regenerate.</div>
       </div></section>
 
       <section class="screen" data-screen="history"><div class="wrap wide">
@@ -911,6 +957,7 @@ textarea{resize:vertical}
         <div class="menurow" data-nav="notifications"><span style="flex:1">Notifications</span><div class="badge">3</div></div>
         <div class="menurow" data-nav="social"><span style="flex:1">Sharing and friends</span><div class="badge">2</div></div>
         <div class="menurow" data-nav="history"><span style="flex:1">Outfit history</span><span class="arw">→</span></div>
+        <div class="menurow" data-nav="avatars3d"><span style="flex:1">My 3D avatars</span><span class="arw">→</span></div>
         <div class="menurow" data-nav="prefs"><span style="flex:1">Style profile and preferences</span><span class="arw">→</span></div>
         <div class="menurow" data-nav="settings"><span style="flex:1">Settings and privacy</span><span class="arw">→</span></div>
         <div class="menurow" data-nav="help"><span style="flex:1">? Help center</span><span class="arw">→</span></div>
@@ -1209,6 +1256,11 @@ textarea{resize:vertical}
           <div class="togglerow"><span>Safety filter for inappropriate images</span><div class="tgl on" data-chip="tSafety"><i></i></div></div>
           <div class="togglerow"><span>Auto-flag high-cost users</span><div class="tgl on" data-chip="tFlag"><i></i></div></div>
         </div>
+        <div class="card" style="display:flex;flex-direction:column;gap:10px">
+          <div class="h">3D avatar engine</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><div style="flex:1;min-width:170px"><div class="lbl">3D model engine</div><select><option>3d-engine-v2</option><option>3d-engine-lite</option></select></div><div style="flex:1;min-width:110px"><div class="lbl">Credits · Standard</div><input value="8"></div><div style="flex:1;min-width:110px"><div class="lbl">Credits · High</div><input value="15"></div></div>
+          <div class="mut">From-outfit generations add +2 credits (extra AI image step). Multi-view input: front / back / left / right.</div>
+        </div>
         <div class="card"><div class="h" style="margin-bottom:10px">Flagged usage and failures</div>
           <div class="tr th" style="grid-template-columns:2fr 1fr 1fr 90px;padding:8px 0;border-bottom:1px solid var(--line)">USER<div>GEN / DAY</div><div>COST MTD</div><div></div></div>
           <div class="tr" style="grid-template-columns:2fr 1fr 1fr 90px;border:none;border-bottom:1px solid var(--line)"><div>dk@email.com</div><div>212 ⚠</div><div>$41.20</div><div class="btn-g small" data-open="suspend" style="text-align:center">Suspend</div></div>
@@ -1472,12 +1524,12 @@ textarea{resize:vertical}
   /* ---------- USER ---------- */
   var U={
     AUTH:['welcome','signup','verify','login','forgot','reset','permissions','style1','style2','avatar','terms','privacy'],
-    st:{screen:'welcome',modal:null,hist:[],credits:3,plan:'free',term:'mo',payCtx:'credits',refine:'',
-      sel:{casual:1,street:1,odinner:1,icasual:1,terms:1,aiconsent:1,permCam:1,permPhoto:1,permNotif:1,tAutoRenew:1,tPush:1,tAlerts:1,tFriend:1,tPrivate:1,tAiConsent:1,avConsent:0},
-      radio:{who:'w',budget:'2',body:'b',cat:'all',occ:'dinner',dress:'smart',time:'night',place:'in',mode:'mix',pb:'2',bold:'bal',base:'1',col:'all',plan:'plus',billing:'mo',pack:'50',pay:'apple',sort:'match',sc:'dinner',sw:'1',fp:'2',csort:'new',vote:'',fr:'maya',pron:'they',fit:'regular',skin:'medium',rpt:'fit',weather:'mild',season:'summer',trip:'leisure',packmode:'closet'}},
+    st:{screen:'welcome',modal:null,hist:[],credits:3,plan:'free',term:'mo',payCtx:'credits',refine:'',a3dSource:'photos',a3dOutfit:'',
+      sel:{casual:1,street:1,odinner:1,icasual:1,terms:1,aiconsent:1,permCam:1,permPhoto:1,permNotif:1,tAutoRenew:1,tPush:1,tAlerts:1,tFriend:1,tPrivate:1,tAiConsent:1,avConsent:0,a3dConsent:0},
+      radio:{who:'w',budget:'2',body:'b',cat:'all',occ:'dinner',dress:'smart',time:'night',place:'in',mode:'mix',pb:'2',bold:'bal',base:'1',col:'all',plan:'plus',billing:'mo',pack:'50',pay:'apple',sort:'match',sc:'dinner',sw:'1',fp:'2',csort:'new',vote:'',fr:'maya',pron:'they',fit:'regular',skin:'medium',rpt:'fit',weather:'mild',season:'summer',trip:'leisure',packmode:'closet',a3dq:'std'}},
     timer:null,
     main:function(){return userApp.querySelector('.main');},
-    go:function(s){var st=this.st;if(st.screen!==s){if(st.hist.length&&st.hist[st.hist.length-1]===s){st.hist.pop();}else if(st.screen!=='genLoading'){st.hist.push(st.screen);if(st.hist.length>25)st.hist.shift();}}st.screen=s;st.modal=null;var m=this.main();if(m)m.scrollTop=0;clearTimeout(this.timer);if(s==='genLoading'){var self=this;this.timer=setTimeout(function(){self.go('genResults');},1800);}this.render();},
+    go:function(s){var st=this.st;if(st.screen!==s){if(st.hist.length&&st.hist[st.hist.length-1]===s){st.hist.pop();}else if(st.screen!=='genLoading'){st.hist.push(st.screen);if(st.hist.length>25)st.hist.shift();}}st.screen=s;st.modal=null;var m=this.main();if(m)m.scrollTop=0;clearTimeout(this.timer);clearInterval(this.a3dTimer);if(s==='genLoading'){var self=this;this.timer=setTimeout(function(){self.go('genResults');},1800);}else if(s==='avatar3dGen'){var self2=this;var _p=0;this.a3dTimer=setInterval(function(){_p=Math.min(100,_p+9);var _pe=document.getElementById('uA3dProg');if(_pe)_pe.textContent=_p+'%';var _ba=document.getElementById('uA3dBar');if(_ba)_ba.style.width=_p+'%';if(_p>=100){clearInterval(self2.a3dTimer);self2.a3dTimer=setTimeout(function(){self2.go('avatar3dResult');},450);}},280);}this.render();},
     back:function(){var st=this.st;var p=st.hist.pop()||'home';st.screen=p;st.modal=null;var m=this.main();if(m)m.scrollTop=0;this.render();},
     render:function(){var st=this.st;
       userApp.classList.toggle('authmode',this.AUTH.indexOf(st.screen)>=0);
@@ -1521,6 +1573,7 @@ textarea{resize:vertical}
       if(ra&&rb&&rc){ra.textContent='4 items · all owned';rb.textContent=closet?'5 items · all owned':'5 items · 1 to buy · ~$68';rc.textContent=closet?'4 items · all owned':'4 items · 2 to buy · ~$115';}
       var pa=document.getElementById('packArea');if(pa){if(st.credits<1){pa.innerHTML='<div class="note" style="border-color:var(--line-2)">You\'re out of credits. Top up to build a packing list.</div><button class="btn" data-open="buyCredits" style="margin-top:8px">Out of credits — top up</button>';}else{pa.innerHTML='<button class="btn" data-act="packGen">Create packing list · 1 credit</button><div class="mut center" style="margin-top:2px">Uses 1 credit · save and edit the list after</div>';}}
       var ga=document.getElementById('genArea');if(ga){if(st.credits<1){ga.innerHTML='<div class="note" style="border-color:var(--line-2)">You\'re out of credits. Top up to keep matching.</div><button class="btn" data-open="buyCredits" style="margin-top:8px">Out of credits — top up</button>';}else{ga.innerHTML='<button class="btn" data-act="generate">Generate outfit · 1 credit</button><div class="mut center" style="margin-top:2px">You have '+st.credits+' credits · <span class="tlink" data-open="buyCredits">top up</span></div>';}}
+      if(st.screen==='avatar3dMake'){var _mt=document.getElementById('uA3dMakeTtl'),_mb=document.getElementById('uA3dMakeBody'),_ma=document.getElementById('uA3dMakeArea');var _src=st.a3dSource||'photos';if(_mt)_mt.textContent=_src==='outfit'?'Create in 3D':'Add your photos';var _cons='<div class="consentrow" data-chip="a3dConsent" style="margin:0 0 10px"><div class="check'+(st.sel.a3dConsent?' on':'')+'">✓</div><span>I consent to Assemble processing my photos to build a 3D avatar — encrypted and deletable anytime.</span></div>';if(_mb){if(_src==='outfit'){_mb.innerHTML=_cons+'<div class="card flat" style="border:1px solid var(--ink)"><b>From your outfit: '+(st.a3dOutfit||'this look')+'</b><div class="mut" style="margin-top:3px">We\'ll create four views of you wearing this look, then build your 3D avatar.</div></div><div class="note" style="margin-top:8px">Real photos give the best 3D. Want to wear it and take four photos instead?</div><button class="btn-o" data-act="a3dUseReal" style="margin-top:6px">Take real photos instead</button>';}else{_mb.innerHTML=_cons+'<div class="note">Tip: full body in frame, good light, plain background, no harsh shadows.</div><div class="grid g-140" style="margin-top:8px">'+['Front','Back','Left','Right'].map(function(v){return '<div class="dashed" data-toast="'+v+' photo added (demo)" style="height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11.5px;cursor:pointer"><div style="font-size:16px">＋</div>'+v+'</div>';}).join('')+'</div>';}}var _q=st.radio.a3dq||'std',_ql=_q==='high'?'High':'Standard',_cost=(_q==='high'?15:8)+(_src==='outfit'?2:0);if(_ma){if(st.credits<_cost){_ma.innerHTML='<div class="note" style="border-color:var(--line-2)">This 3D avatar needs '+_cost+' credits — you have '+st.credits+'. Top up to continue.</div><button class="btn" data-open="buyCredits" style="margin-top:8px">Top up credits</button>';}else{_ma.innerHTML='<button class="btn" data-act="a3dGenerate">Create 3D avatar · '+_cost+' credits</button><div class="mut center" style="margin-top:2px">'+_ql+' quality · you have '+st.credits+' credits</div>';}}}
       var scrim=document.getElementById('uScrim');scrim.classList.toggle('show',!!st.modal);
       userApp.querySelectorAll('.modal').forEach(function(el){el.classList.toggle('active',el.dataset.modal===st.modal);});
     },
@@ -1542,6 +1595,11 @@ textarea{resize:vertical}
       case 'saveItem':this.go('closet');break;
       case 'generate':if(st.credits<1){st.modal='buyCredits';this.render();break;}st.credits--;st.refine='';this.go('genLoading');break;
       case 'surprise':st.refine='';this.go('genLoading');break;
+      case 'a3dStartPhotos':st.a3dSource='photos';this.go('avatar3dMake');break;
+      case 'a3dFromOutfit':st.a3dSource='outfit';st.a3dOutfit=(document.querySelector('#userApp [data-screen="outfitDetail"] .ttl')||{}).textContent||'this look';this.go('avatar3dMake');break;
+      case 'a3dUseReal':st.a3dSource='photos';this.render();break;
+      case 'a3dGenerate':{var _q3=st.radio.a3dq||'std',_c3=(_q3==='high'?15:8)+(st.a3dSource==='outfit'?2:0);if(!st.sel.a3dConsent){var _t3=document.getElementById('uToastMsg');if(_t3)_t3.textContent='Please tick the consent box first.';st.modal='utoast';this.render();break;}if(st.credits<_c3){st.modal='buyCredits';this.render();break;}st.credits-=_c3;this.go('avatar3dGen');break;}
+      case 'a3dSave':{var _sn=document.getElementById('uA3dSavedNote');if(_sn)_sn.style.display='';break;}
       case 'packGen':st.packSaved=false;if(st.credits<1){st.modal='buyCredits';this.render();break;}st.credits--;this.go('packingList');break;
       case 'wearToday':{st.wornToday=!st.wornToday;var hl=document.getElementById('uHistList');if(hl){var ex=hl.querySelector('.today-log');if(st.wornToday&&!ex){var nm=(document.querySelector('#userApp .screen.active .ttl')||{}).textContent||'Outfit';var c=document.createElement('div');c.className='card flat today-log';c.style.cssText='display:flex;gap:10px;align-items:center;border:1px solid var(--ink)';c.innerHTML='<div class="ph" style="width:46px;height:46px;border-radius:8px;flex:none"></div><div style="flex:1"><div style="font-weight:600;font-size:12.5px">'+nm+'</div><div class="mut">Today · just now</div></div><button class="btn-o" data-nav="outfitDetail" style="padding:6px 10px;font-size:11px">View</button>';hl.insertBefore(c,hl.firstChild);}else if(!st.wornToday&&ex){ex.remove();}}this.render();break;}
       case 'delCollDone':st.modal=null;this.go('saved');break;
